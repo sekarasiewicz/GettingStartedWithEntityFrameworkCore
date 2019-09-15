@@ -1,4 +1,5 @@
-﻿using System;
+﻿using static System.Console;
+using System.Collections.Generic;
 
 namespace GettingStartedWithEntityFrameworkCore
 {
@@ -6,7 +7,14 @@ namespace GettingStartedWithEntityFrameworkCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using (var context = new EFCoreDemoContext())
+            {
+                foreach(var book in context.Books)
+                {
+                    WriteLine();
+                    WriteLine(book.Title);
+                }
+            }
         }
     }
 }
